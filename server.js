@@ -17,7 +17,6 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/burgers_controller.js");
 
 app.get("/", (req, res)=> {
-    connection.query("SELECT * FROM ")
     res.render("index");
 })
 
