@@ -6,7 +6,7 @@ const connection = require("./config/connection.js")
 const app = express();
 var PORT = process.env.PORT || 8080;
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "public"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,6 +17,9 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/burgers_controller.js");
 
 app.get("/", (req, res)=> {
+    connection.query("SELECT * FROM burger", (err, data) => {
+        console.table(data)
+    });
     res.render("index");
 })
 
